@@ -50,11 +50,17 @@ History Transaksi Pembelian <strong><?= $username ?></strong>
 	                                        <?php if ($item2['foto'] != '' and file_exists("img/" . $item2['foto'] . "")) : ?>
 	                                            <img src="<?php echo base_url() . "img/" . $item2['foto'] ?>" width="100px">
 	                                        <?php endif; ?>
-	                                        <strong><?= $item2['nama'] ?></strong>
-	                                        <?= number_to_currency($item2['harga'], 'IDR') ?>
-	                                        <br>
-	                                        <?= "(" . $item2['jumlah'] . " pcs)" ?><br>
-	                                        <?= number_to_currency($item2['subtotal_harga'], 'IDR') ?>
+	                                       <strong><?= $item2['nama'] ?></strong>
+<?= number_to_currency($item2['harga'], 'IDR') ?>
+<br>
+<?= "(" . $item2['jumlah'] . " pcs)" ?><br>
+
+<?php if (isset($item2['diskon'])): ?>
+    <small class="text-success">Diskon: Rp<?= number_format($item2['diskon'], 0, ',', '.') ?></small><br>
+<?php endif; ?>
+
+<?= number_to_currency($item2['subtotal_harga'], 'IDR') ?>
+
 	                                        <hr>
 	                                    <?php 
 	                                    endforeach; 

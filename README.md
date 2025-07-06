@@ -88,3 +88,24 @@ Proyek menggunakan struktur MVC CodeIgniter 4:
 - public/img - Gambar produk dan aset
 - public/NiceAdmin - Template admin
 
+## 📦 Fitur Utama:
+- Login multi-role (admin & user biasa)
+- Manajemen produk dan kategori
+- Keranjang belanja (dengan session & library Cart)
+- Checkout transaksi dengan pengiriman (web service RajaOngkir)
+- Diskon harian otomatis (berdasarkan tanggal login)
+- Riwayat transaksi & detail pembelian
+- Dashboard sederhana (folder public)
+- Validasi diskon tidak boleh duplikat tanggal
+- Diskon tampil di header, keranjang, transaksi, dan profil
+
+---
+
+## ⚙️ Cara Install
+1. Clone project ini
+2. Jalankan `composer install`
+3. Copy file `.env.example` jadi `.env`, lalu isi koneksi database
+4. Jalankan migration:
+   ```bash
+   php spark migrate
+   php spark db:seed DiskonSeeder

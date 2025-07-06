@@ -18,17 +18,31 @@ class Home extends BaseController
         helper('form');
         helper('number');
         $this->product = new ProductModel();
-        $this->transaction = new Transaction();
+        $this->transaction = new TransactionModel();
         $this->transaction_detail = new TransactionDetailModel();
      }
 
-    public function index(): string
-    {
-        $product = $this->product->findAll();
-        $data['product'] = $product;
+   public function index(): string
+{
+    $product = $this->product->findAll();
 
-       return view('v_home', $data);
+    // Ambil diskon aktif hari ini
+    $diskonModel = new \App\Models\DiskonModel(); // <- Ini WAJIB
+    $today = date('Y-m-d');
+    $diskon = $diskonModel->where('tanggal', $today)->first();
+    $nominalDiskon = $diskon ? $diskon['nominal'] : 0;
+
+    // Tambahkan harga setelah diskon
+    foreach ($product as &$p) {
+        $p['harga_asli'] = $p['harga'];
+        $p['harga_setelah_diskon'] = max(0, $p['harga'] - $nominalDiskon);
     }
+
+    $data['product'] = $product;
+    $data['diskon'] = $diskon;
+
+    return view('v_home', $data);
+}
 
     public function profile()
 {

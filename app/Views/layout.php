@@ -18,6 +18,7 @@ if(uri_string()!=""){
   <!-- Favicons -->
   <link href="<?= base_url()?>NiceAdmin/assets/img/favicon.png" rel="icon">
   <link href="<?= base_url()?>NiceAdmin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -67,6 +68,11 @@ if(uri_string()!=""){
 </ol>
       </nav>
     </div><!-- End Page Title -->
+ <?php if (session()->get('diskon_nominal')) : ?>
+    <div style="background-color: #e0ffe0; padding: 10px; color: green; text-align: center;">
+        🎉 Diskon Hari Ini: <strong>Rp<?= number_format(session()->get('diskon_nominal'), 0, ',', '.') ?></strong>
+    </div>
+<?php endif; ?>
 
     <section class="section">
       <div class="row">
@@ -107,6 +113,8 @@ if(uri_string()!=""){
   <script src="<?= base_url()?>NiceAdmin/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+  
+
   <script src="<?= base_url()?>NiceAdmin/assets/js/main.js"></script>
 
   <?= $this->renderSection('script') ?> 

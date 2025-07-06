@@ -1,5 +1,13 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('content') ?>
+
+<?php if (session('role') == 'admin' && session()->get('diskon_nominal')) : ?>
+    <div class="alert alert-info text-center">
+        📅 Diskon Hari Ini (<?= date('d M Y') ?>): 
+        <strong>Rp<?= number_format(session('diskon_nominal'), 0, ',', '.') ?></strong>
+    </div>
+<?php endif; ?>
+
 <?php
 if (session()->getFlashData('success')) {
 ?>
@@ -24,7 +32,15 @@ if (session()->getFlashData('success')) {
             <div class="card">
                 <div class="card-body">
                     <img src="<?php echo base_url() . "img/" . $item['foto'] ?>" alt="..." width="300px">
-                    <h5 class="card-title"><?php echo $item['nama'] ?><br><?php echo number_to_currency($item['harga'], 'IDR') ?></h5>
+                   <h5 class="card-title">
+    <?= esc($item['nama']) ?><br>
+    <?php if (isset($item['harga_asli']) && $item['harga_asli'] > $item['harga_setelah_diskon']) : ?>
+        <del class="text-muted"><?= number_to_currency($item['harga_asli'], 'IDR') ?></del><br>
+        <strong class="text-success"><?= number_to_currency($item['harga_setelah_diskon'], 'IDR') ?></strong>
+    <?php else : ?>
+        <?= number_to_currency($item['harga'], 'IDR') ?>
+    <?php endif; ?>
+</h5>
                     <button type="submit" class="btn btn-info rounded-pill">Beli</button>
                 </div>
             </div>

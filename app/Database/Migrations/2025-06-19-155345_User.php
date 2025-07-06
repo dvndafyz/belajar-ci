@@ -47,7 +47,7 @@ class User extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('user');
+        //$this->forge->createTable('user');
     }
 
     //--------------------------------------------------------------------

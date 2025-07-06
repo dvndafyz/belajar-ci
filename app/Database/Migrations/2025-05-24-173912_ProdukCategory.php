@@ -44,7 +44,7 @@ class ProdukCategory extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('ProdukCategory');
+        //$this->forge->createTable('ProdukCategory');//
     }
 
     //--------------------------------------------------------------------
