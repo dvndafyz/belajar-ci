@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Toko Online CodeIgniter 4
 
 Proyek ini adalah platform toko online yang dibangun menggunakan [CodeIgniter 4](https://codeigniter.com/). Sistem ini menyediakan beberapa fungsionalitas untuk toko online, termasuk manajemen produk, keranjang belanja, dan sistem transaksi.
@@ -109,3 +110,6 @@ Proyek menggunakan struktur MVC CodeIgniter 4:
    ```bash
    php spark migrate
    php spark db:seed DiskonSeeder
+=======
+# belajar-ci
+>>>>>>> 6ac9b064a11b0cf10f671591e904ed190fd599ce
